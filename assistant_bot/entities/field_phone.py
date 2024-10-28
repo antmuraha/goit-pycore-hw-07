@@ -1,6 +1,5 @@
-
 import re
-from assistant_bot.entities.field import Field
+from .field import Field
 
 
 class FieldPhone(Field):

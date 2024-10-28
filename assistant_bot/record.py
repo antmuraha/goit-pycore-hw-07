@@ -1,5 +1,4 @@
-from assistant_bot.entities.field_name import FieldName
-from assistant_bot.entities.field_phone import FieldPhone
+from entities import FieldBirthday, FieldPhone, FieldName
 
 
 class Record:
@@ -10,9 +9,11 @@ class Record:
     def __init__(self, name):
         self.name = FieldName(name)
         self.phones: list[FieldPhone] = []
+        self.birthday: FieldBirthday = None
 
     def __str__(self):
-        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
+        birthday_str = f" ({self.birthday})" if self.birthday else ''
+        return f"Contact name: {self.name.value}{birthday_str}, phones: {', '.join(p.value for p in self.phones)}"
 
     def __repr__(self):
         return f"Record: \"{self}\""
@@ -21,7 +22,10 @@ class Record:
         if not self.find_phone(phone):
             self.phones.append(FieldPhone(phone))
         else:
-            raise RecordPhoneAlreadyExistError
+            raise
+
+    def add_birthday(self, birthday: str):
+        self.birthday = FieldBirthday(birthday)
 
     def remove_phone(self, phone: str):
         self.phones = list(filter(lambda p: p.value != phone, self.phones))

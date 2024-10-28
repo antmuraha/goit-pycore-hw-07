@@ -14,8 +14,15 @@ pip install -r requirements.txt
 python main.py
 ```
 
-### Running a assistant bot (old version)
+### Running a assistant bot
 
 ```
 python assistant_bot.py
+```
+
+### Run tests
+
+```
+cd assistant_bot
+python -m unittest discover -s tests
 ```

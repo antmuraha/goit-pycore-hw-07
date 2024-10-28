@@ -1,5 +1,5 @@
-import assistant_bot
+from assistant_bot import main
 
 
 if __name__ == "__main__":
-    assistant_bot.run()
+    main()
